@@ -1,0 +1,62 @@
+<h2 class="text-3xl font-extrabold mb-8 text-blue-700 border-b-4 border-blue-300 pb-2">Overview</h2>
+
+<!-- Summary Cards -->
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
+
+  <div
+    class="p-6 bg-gradient-to-r from-blue-50 to-white border border-blue-100 rounded-2xl shadow-lg hover:shadow-xl transition-shadow">
+    <p class="text-sm text-blue-400 uppercase tracking-wide mb-2">Total Products</p>
+    <h3 class="text-4xl font-extrabold text-gray-900">{{ summary?.totalProducts }}</h3>
+    <svg class="w-8 h-8 text-blue-500 mt-3" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+      <path stroke-linecap="round" stroke-linejoin="round" d="M3 10h18M9 21V10m6 11V10"></path>
+    </svg>
+  </div>
+  
+
+  <div
+    class="p-6 bg-gradient-to-r from-green-50 to-white border border-green-100 rounded-2xl shadow-lg hover:shadow-xl transition-shadow">
+    <p class="text-sm text-green-400 uppercase tracking-wide mb-2">Total Categories</p>
+    <h3 class="text-4xl font-extrabold text-gray-900">{{ summary?.totalCategories }}</h3>
+    <svg class="w-8 h-8 text-green-500 mt-3" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+      <circle cx="12" cy="12" r="10" stroke-linecap="round" stroke-linejoin="round" />
+    </svg>
+  </div>
+
+  <div
+    class="p-6 bg-gradient-to-r from-yellow-50 to-white border border-yellow-100 rounded-2xl shadow-lg hover:shadow-xl transition-shadow">
+    <p class="text-sm text-yellow-400 uppercase tracking-wide mb-2">Average Price</p>
+    <h3 class="text-4xl font-extrabold text-gray-900">₹{{ avgPrice }}</h3>
+    <svg class="w-8 h-8 text-yellow-500 mt-3" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+      <path stroke-linecap="round" stroke-linejoin="round"
+        d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3-.895 3-2-1.343-2-3-2z"></path>
+      <path stroke-linecap="round" stroke-linejoin="round" d="M12 12v4"></path>
+    </svg>
+  </div>
+
+  <div
+    class="p-6 bg-gradient-to-r from-purple-50 to-white border border-purple-100 rounded-2xl shadow-lg hover:shadow-xl transition-shadow">
+    <p class="text-sm text-purple-400 uppercase tracking-wide mb-2">Total Inventory Value</p>
+    <h3 class="text-4xl font-extrabold text-gray-900">₹{{ totalPrice }}</h3>
+    <svg class="w-8 h-8 text-purple-500 mt-3" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+      <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"></path>
+    </svg>
+  </div>
+
+</div>
+
+<!-- Highest / Lowest -->
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-8">
+
+  <div class="p-6 bg-white border border-gray-200 rounded-2xl shadow-md hover:shadow-lg transition-shadow">
+    <h3 class="font-semibold text-xl mb-3 text-gray-900 border-b border-gray-300 pb-2">Highest Priced Product</h3>
+    <p class="text-gray-700 text-lg font-medium">{{ highestProduct?.name }} - <span class="text-red-600 font-bold">₹{{
+        highestProduct?.price }}</span></p>
+  </div>
+
+  <div class="p-6 bg-white border border-gray-200 rounded-2xl shadow-md hover:shadow-lg transition-shadow">
+    <h3 class="font-semibold text-xl mb-3 text-gray-900 border-b border-gray-300 pb-2">Lowest Priced Product</h3>
+    <p class="text-gray-700 text-lg font-medium">{{ lowestProduct?.name }} - <span class="text-green-600 font-bold">₹{{
+        lowestProduct?.price }}</span></p>
+  </div>
+
+</div>

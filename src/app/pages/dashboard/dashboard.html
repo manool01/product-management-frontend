@@ -1,0 +1,97 @@
+<div class="flex h-screen bg-gray-100">
+    <aside
+        class="hidden md:flex md:flex-col w-72 bg-gradient-to-b from-blue-50 to-white border-r border-blue-100 shadow-lg rounded-tr-2xl rounded-br-2xl py-8 px-6 min-h-screen">
+        <h2 class="font-extrabold text-2xl mb-10 flex items-center gap-3 text-blue-700 tracking-wide">
+            <svg class="w-7 h-7 text-blue-600" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M12 2L2 7l10 5 10-5-10-5zm0 9.75L2 7v10l10 5 10-5V7l-10 4.75z" />
+            </svg>
+            Product Admin
+        </h2>
+        <nav class="flex flex-col gap-2">
+            <a routerLink="/dashboard" routerLinkActive="bg-blue-100 text-blue-700 font-semibold"
+                class="nav-link flex items-center gap-3 px-4 py-3 rounded-lg transition-all duration-150 hover:bg-blue-50 hover:text-blue-600">
+                <svg class="icon w-6 h-6 text-blue-400" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M4 6h16v2H4V6zm0 5h10v2H4v-2zm0 5h7v2H4v-2z" />
+                </svg>
+                Overview
+            </a>
+            <a routerLink="/categories" routerLinkActive="bg-blue-100 text-blue-700 font-semibold"
+                class="nav-link flex items-center gap-3 px-4 py-3 rounded-lg transition-all duration-150 hover:bg-blue-50 hover:text-blue-600">
+                <svg class="icon w-6 h-6 text-blue-400" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M4 4h16v4H4V4zm0 6h10v4H4v-4zm0 6h7v4H4v-4z" />
+                </svg>
+                Categories
+            </a>
+            <a routerLink="/products" routerLinkActive="bg-blue-100 text-blue-700 font-semibold"
+                class="nav-link flex items-center gap-3 px-4 py-3 rounded-lg transition-all duration-150 hover:bg-blue-50 hover:text-blue-600">
+                <svg class="icon w-6 h-6 text-blue-400" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M3 6h18v12H3V6zm2 2v8h14V8H5z" />
+                </svg>
+                Products
+            </a>
+            <a routerLink="/bulk-upload" routerLinkActive="bg-blue-100 text-blue-700 font-semibold"
+                class="nav-link flex items-center gap-3 px-4 py-3 rounded-lg transition-all duration-150 hover:bg-blue-50 hover:text-blue-600">
+                <svg class="icon w-6 h-6 text-blue-400" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M12 3l6 6h-4v6h-4V9H6l6-6zM6 19h12v2H6v-2z" />
+                </svg>
+                Bulk Upload
+            </a>
+            <a routerLink="/reports" routerLinkActive="bg-blue-100 text-blue-700 font-semibold"
+                class="nav-link flex items-center gap-3 px-4 py-3 rounded-lg transition-all duration-150 hover:bg-blue-50 hover:text-blue-600">
+                <svg class="icon w-6 h-6 text-blue-400" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M5 3h14v2H5V3zm0 4h10v2H5V7zm0 4h8v2H5v-2zm0 4h6v2H5v-2z" />
+                </svg>
+                Reports
+            </a>
+        </nav>
+    </aside>
+
+    <!-- Content Area -->
+    <!-- <div class="flex-1 flex flex-col">
+        <header class="bg-white shadow px-4 py-3 flex justify-between items-center">
+            <button class="md:hidden text-gray-600" (click)="toggleSidebar()">
+                <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                </svg>
+            </button>
+
+            <h1 class="font-medium text-lg">Dashboard</h1>
+
+            <button (click)="logout()" class="px-4 py-2 bg-red-600 text-white rounded hover:bg-red-700">
+                Logout
+            </button>
+        </header>
+
+        <main class="p-6 overflow-auto flex-1">
+            <router-outlet></router-outlet>
+        </main>
+    </div> -->
+
+    <div class="flex-1 flex flex-col min-h-screen bg-gray-50">
+        <header class="bg-white shadow-md px-6 py-4 flex justify-between items-center border-b border-gray-200">
+            <!-- Sidebar toggle button (mobile) -->
+            <button
+                class="md:hidden p-2 rounded-md text-gray-700 hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                aria-label="Toggle Sidebar" (click)="toggleSidebar()">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                    stroke-linejoin="round" viewBox="0 0 24 24">
+                    <path d="M4 6h16M4 12h16M4 18h16" />
+                </svg>
+            </button>
+
+            <!-- Page title -->
+            <h1 class="font-semibold text-xl text-gray-900 select-none">Dashboard</h1>
+
+            <!-- Logout Button -->
+            <button (click)="logout()"
+                class="px-5 py-2 bg-red-600 text-white rounded-lg shadow hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-red-500 transition-colors duration-200">
+                Logout
+            </button>
+        </header>
+
+        <main class="flex-1 p-8 overflow-auto">
+            <router-outlet></router-outlet>
+        </main>
+    </div>
+
+</div>

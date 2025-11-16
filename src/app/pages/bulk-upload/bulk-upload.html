@@ -1,0 +1,70 @@
+<div class="flex flex-col items-center justify-start p-10 w-full">
+
+    <h2 class="text-2xl font-semibold mb-6">Bulk Upload Products</h2>
+
+    <div class="bg-white p-8 rounded-xl border shadow-sm w-full max-w-2xl">
+
+        <!-- DROPZONE -->
+        <label for="dropzone-file"
+            class="flex flex-col items-center justify-center w-full h-60 border-2 border-dashed rounded-lg cursor-pointer transition"
+            [class.border-gray-300]="!loading" [class.opacity-50]="loading">
+            <div class="flex flex-col items-center text-center p-6">
+
+                <svg class="w-10 h-10 mb-3 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M7 16V4a1 1 0 011-1h8a1 1 0 011 1v12m-4-4l-4 4m4-4l4 4m-4-4v8" />
+                </svg>
+
+                <p class="text-sm text-gray-600">
+                    <span class="font-semibold">Click to upload</span> or drag & drop
+                </p>
+                <p class="text-xs text-gray-500 mt-1">Only .xlsx files supported</p>
+
+                <p *ngIf="file" class="mt-4 text-sm text-green-600 font-medium">
+                    Selected: {{ file.name }}
+                </p>
+            </div>
+
+            <input id="dropzone-file" type="file" accept=".xlsx" class="hidden" (change)="onFileSelect($event)"
+                [disabled]="loading" />
+        </label>
+
+        <!-- UPLOAD BUTTON -->
+        <button (click)="upload()" [disabled]="!file || loading"
+            class="mt-6 w-full bg-blue-600 text-white py-3 rounded-lg hover:bg-blue-700 transition disabled:bg-gray-400 flex items-center justify-center gap-2">
+            <ng-container *ngIf="!loading">Upload File</ng-container>
+
+            <ng-container *ngIf="loading">
+                <svg class="w-5 h-5 animate-spin" fill="none" viewBox="0 0 24 24">
+                    <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                    <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 
+                   0 5.373 0 12h4z"></path>
+                </svg>
+                Uploading...
+            </ng-container>
+        </button>
+    </div>
+
+    <!-- SUMMARY -->
+    <div *ngIf="result" class="bg-white p-6 mt-6 rounded-xl border shadow-sm w-full max-w-2xl">
+
+        <h3 class="text-lg font-semibold mb-3">Upload Summary</h3>
+
+        <p><strong>Inserted:</strong> {{ result.inserted }}</p>
+        <p><strong>Skipped:</strong> {{ result.skipped }}</p>
+
+        <div *ngIf="result.skippedExamples?.length" class="mt-4">
+            <h4 class="font-medium">Skipped Examples:</h4>
+
+            <ul class="text-sm text-gray-600 list-disc ml-6">
+                <li *ngFor="let s of result.skippedExamples | slice:0:5">
+                    {{ s.row.name }} — {{ s.reason }}
+                </li>
+            </ul>
+
+            <p class="text-xs text-gray-400 mt-1">Showing first 5 only</p>
+        </div>
+
+    </div>
+
+</div>

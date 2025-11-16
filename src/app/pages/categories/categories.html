@@ -1,0 +1,79 @@
+<div class="p-6 space-y-6">
+
+  <div class="flex justify-between items-center">
+    <h2 class="text-xl font-semibold">Categories</h2>
+    <button (click)="openAdd()" class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">
+      + Add Category
+    </button>
+  </div>
+
+  <div class="overflow-x-auto rounded-lg border border-gray-200 shadow-sm bg-white">
+    <table class="w-full text-sm text-left text-gray-600">
+      <thead class="text-xs uppercase bg-gray-50 border-b">
+        <tr>
+          <th scope="col" class="px-6 py-4">#</th>
+          <th scope="col" class="px-6 py-4">Category Name</th>
+          <th scope="col" class="px-6 py-4 text-right">Actions</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <tr *ngFor="let c of categories; let i = index" class="border-b hover:bg-gray-50 transition">
+          <td class="px-6 py-3 font-medium text-gray-700">{{ i + 1 }}</td>
+          <td class="px-6 py-3">{{ c.name }}</td>
+          <td class="px-6 py-3 text-right space-x-3">
+
+            <button (click)="openEdit(c)" class="text-blue-600 hover:text-blue-800 font-medium">
+              Edit
+            </button>
+
+            <button (click)="remove(c)" class="text-red-600 hover:text-red-800 font-medium">
+              Delete
+            </button>
+
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Pagination -->
+  <div class="flex justify-between items-center mt-4">
+    <p class="text-sm text-gray-600">
+      Page {{ page }} of {{ totalPages }}
+    </p>
+
+    <div class="space-x-2">
+      <button (click)="prevPage()" [disabled]="page === 1"
+        class="px-3 py-1 border rounded disabled:opacity-50 hover:bg-gray-100">
+        Prev
+      </button>
+
+      <button (click)="nextPage()" [disabled]="page === totalPages"
+        class="px-3 py-1 border rounded disabled:opacity-50 hover:bg-gray-100">
+        Next
+      </button>
+    </div>
+  </div>
+
+</div>
+
+<!-- Add/Edit Modal -->
+<div *ngIf="showModal" class="fixed inset-0 bg-black bg-opacity-40 flex items-center justify-center z-50">
+
+  <div class="bg-white w-96 p-6 rounded-lg shadow space-y-4">
+    <h3 class="text-lg font-semibold">
+      {{ editing ? 'Edit Category' : 'Add Category' }}
+    </h3>
+
+    <input type="text" [(ngModel)]="name" placeholder="Category Name" class="w-full border p-2 rounded">
+
+    <div class="flex justify-end space-x-2">
+      <button class="px-4 py-2" (click)="closeModal()">Cancel</button>
+
+      <button (click)="save()" class="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700">
+        Save
+      </button>
+    </div>
+  </div>
+</div>
